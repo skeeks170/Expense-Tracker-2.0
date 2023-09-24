@@ -1,0 +1,28 @@
+.container-fill {
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-box {
+  background-color: rgb(255, 128, 128);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-direction: column;
+
+  height: 650px;
+  width: 500px;
+  border-radius: 50px;
+  border-color: brown;
+}
+
+.toggle-link:hover {
+  cursor: pointer; /* Change cursor to pointer on hover */
+  text-decoration: underline; /* Underline text on hover */
+  color: blue; /* Change text color on hover (you can customize this) */
+}

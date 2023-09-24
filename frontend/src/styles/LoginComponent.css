@@ -1,0 +1,10 @@
+.button-custom {
+  height: 20px;
+  width: 60px;
+  background-color: black;
+  color: aliceblue;
+}
+
+.container-box {
+  width: 400px;
+}
