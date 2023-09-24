@@ -39,6 +39,9 @@ public class UserMasterService {
         UserMaster userMaster = userMasterMapper.getUser(registerDTO);
         userMaster.setUserPassword(passwordEncoder.encode(CharBuffer.wrap(registerDTO.userPassword())));
 
+        userMaster.setUserFirstName(registerDTO.userFirstName());
+        userMaster.setUserLastName(registerDTO.userLastName());
+
         userMasterRepository.save(userMaster);
     }
 
