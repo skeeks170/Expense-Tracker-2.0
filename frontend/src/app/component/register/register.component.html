@@ -1,0 +1,65 @@
+<div style="height: 100vh; display: flex; justify-content: center; align-items: center;">
+    <mat-card style="max-width: 800px; width: 100%; padding: 1rem;">
+        <mat-card-title style="margin-bottom: 1rem;">Employee Registration</mat-card-title>
+        <form (ngSubmit)="onSubmit()" #registrationForm="ngForm">
+            <div style="display: flex; flex-direction: column;">
+                <mat-form-field>
+                    <mat-label for="employeeEmail">Employee Email</mat-label>
+                    <input matInput type="text" id="employeeEmail" name="employeeEmail" [(ngModel)]="employeeEmail" />
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label for="employeeUsername">Employee Username</mat-label>
+                    <input matInput type="text" id="employeeUsername" name="employeeUsername"
+                        [(ngModel)]="employeeUsername" />
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label for="employeePassword">Employee Password</mat-label>
+                    <input matInput type="password" id="employeePassword" name="employeePassword"
+                        [(ngModel)]="employeePassword" />
+                </mat-form-field>
+                <div style="display: flex; width: 100%;">
+                    <mat-form-field style="flex: 1; margin-right: 1rem;">
+                        <mat-label for="role">Select Role</mat-label>
+                        <mat-select name="role" id="role" [(ngModel)]="role">
+                            <mat-option [value]="'non-admin'">non-admin</mat-option>
+                            <mat-option [value]="'admin'">admin</mat-option>
+                            <mat-option [value]="'super-admin'">super-admin</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field style="flex: 1;">
+                        <mat-label for="department">Select Department</mat-label>
+                        <mat-select name="department" id="department" [(ngModel)]="department">
+                            <mat-option [value]="'java'">java</mat-option>
+                            <mat-option [value]="'data'">data</mat-option>
+                            <mat-option [value]="'devOps'">devOps</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <mat-form-field>
+                    <mat-label for="accountBankAccountNumber">Bank Account Number</mat-label>
+                    <input matInput type="text" id="accountBankAccountNumber" name="accountBankAccountNumber"
+                        [(ngModel)]="accountBankAccountNumber" />
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label for="accountBankName">Account Bank Name</mat-label>
+                    <input matInput type="text" id="accountBankName" name="accountBankName"
+                        [(ngModel)]="accountBankName" />
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label for="accountIfsc">Account IFSC</mat-label>
+                    <input matInput type="text" id="accountIfsc" name="accountIfsc" [(ngModel)]="accountIfsc" />
+                </mat-form-field>
+
+            </div>
+
+            <button mat-raised-button color="primary" type="submit"
+                style="width: 100%; margin-bottom: 1rem;">Register</button>
+        </form>
+    </mat-card>
+</div>

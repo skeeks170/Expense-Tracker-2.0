@@ -1,0 +1,27 @@
+<mat-toolbar color="primary">
+    <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin: 0 auto;">
+        <div style="display: flex; align-items: center;">
+            <a routerLink="" style="color: white; text-decoration: none; font-size: 20px; margin-right: 10px;">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+            </a>
+            <div *ngIf="loginStatus" (click)="back()"
+                style="color: white; text-decoration: none; margin-left: 10px; margin-bottom: 11px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white"
+                    class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
+                </svg>
+            </div>
+        </div>
+        <div *ngIf="!loginStatus" style="display: flex; align-items: center;">
+            <a routerLink="/login" style="color: white; text-decoration: none; margin-left: 10px;">LOGIN</a>
+            <a routerLink="/register" style="color: white; text-decoration: none; margin-left: 10px;">REGISTER</a>
+        </div>
+        <div *ngIf="loginStatus" style="display: flex; align-items: center;">
+            <a (click)="logout()" routerLink=""
+                style="cursor: pointer; color: white; text-decoration: none; margin-left: 10px;">LOGOUT</a>
+        </div>
+    </div>
+</mat-toolbar>
+
+<router-outlet></router-outlet>
