@@ -42,7 +42,7 @@ public class DashboardRecordsServices {
 
         dashboardRecords.sort(Comparator.comparing(DashboardRecordsDTO::getTransactionDate).reversed());
 
-        return dashboardRecords.subList(0, Math.min(dashboardRecords.size(), 10));
+        return dashboardRecords;
     }
 
     public DashboardRecordsDTO mapUserIncomeToDashboardRecordDTO(UserIncome userIncome) {

@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useUserId } from "../UserIdContext";
 import Table from "react-bootstrap/Table";
+import Form from "react-bootstrap/Form";
 import CanvasJSReact from "@canvasjs/react-charts";
 
 const DashboardTable = () => {
   const { userId, token } = useUserId();
   const [dashboardData, setDashboardData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [filterValue, setFilterValue] = useState(""); // State for the filter input
 
   const storedUserId = localStorage.getItem("userId");
   const storedToken = localStorage.getItem("token");
@@ -78,35 +80,48 @@ const DashboardTable = () => {
     ],
   };
 
+  // Step 4: Filter dashboardData based on the filterValue
+  const filteredData = dashboardData.filter((record) =>
+    record.transactionCategory.toLowerCase().includes(filterValue.toLowerCase())
+  );
+
   return (
     <div>
       <h3>Dashboard</h3>
+
+      {/* Step 3: Add the filter input field */}
+      <Form.Group controlId="filterInput">
+        <Form.Label>Filter by Category:</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter category"
+          value={filterValue}
+          onChange={(e) => setFilterValue(e.target.value)}
+        />
+      </Form.Group>
+
       <div className="table-container">
         <Table striped bordered hover>
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th>Category</th>
-                <th>Description</th>
-                <th>Amount</th>
-                <th>Date</th>
-                <th>Type</th>
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Description</th>
+              <th>Amount</th>
+              <th>Date</th>
+              <th>Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredData.map((record, index) => (
+              <tr key={index}>
+                <td>{record.transactionCategory}</td>
+                <td>{record.transactionDescription}</td>
+                <td>${record.transactionAmount.toFixed(2)}</td>
+                <td>{new Date(record.transactionDate).toLocaleDateString()}</td>
+                <td>{record.transactionType}</td>
               </tr>
-            </thead>
-            <tbody>
-              {dashboardData.map((record, index) => (
-                <tr key={index}>
-                  <td>{record.transactionCategory}</td>
-                  <td>{record.transactionDescription}</td>
-                  <td>${record.transactionAmount.toFixed(2)}</td>
-                  <td>
-                    {new Date(record.transactionDate).toLocaleDateString()}
-                  </td>
-                  <td>{record.transactionType}</td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
+            ))}
+          </tbody>
         </Table>
       </div>
       <div className="chart-container">

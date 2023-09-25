@@ -91,7 +91,7 @@ const IncomeTable = () => {
             <tr key={index}>
               <td>{income.incomeCategory}</td>
               <td>{income.incomeDescription}</td>
-              <td>${income.incomeAmount.toFixed(2)}</td>
+              <td>INR {income.incomeAmount.toFixed(2)}</td>
               <td>{new Date(income.incomeDate).toLocaleDateString()}</td>
               <td>
                 <Button
