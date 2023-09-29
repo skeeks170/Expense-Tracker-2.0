@@ -8,10 +8,7 @@ import com.payment.backend.entities.UserMaster;
 import com.payment.backend.service.UserMasterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.List;
@@ -39,5 +36,10 @@ public class UserMasterController {
         UserMasterDTO userMasterDTO = userMasterService.login(loginDTO);
         userMasterDTO.setToken(userAuthProvider.createToken(userMasterDTO));
         return ResponseEntity.created(URI.create("/user/" + userMasterDTO.getUserId())).body(userMasterDTO);
+    }
+
+    @GetMapping("currentUser/{userId}")
+    UserMasterDTO getUserDTOById(@PathVariable int userId) {
+        return userMasterService.getUserDTOById(userId);
     }
 }

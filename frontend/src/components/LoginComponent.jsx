@@ -22,13 +22,18 @@ const LoginComponent = () => {
     });
   };
 
-  const handleSuccessfulLogin = (userId, token, firstName, lastName) => {
+  const handleSuccessfulLogin = (
+    userId,
+    token,
+    userFirstName,
+    userLastName
+  ) => {
     alert("Logged in successfully");
 
     localStorage.setItem("userId", userId);
     localStorage.setItem("token", token);
-    localStorage.setItem("userFirstName", firstName);
-    localStorage.setItem("userLastName", lastName);
+    localStorage.setItem("userFirstName", userFirstName);
+    localStorage.setItem("userLastName", userLastName);
     navigate("/home");
   };
 
@@ -54,7 +59,7 @@ const LoginComponent = () => {
 
   return (
     <div className="container-box">
-      <h3>Login</h3>
+      <h1 className="text">Login</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <FloatingLabel
@@ -83,7 +88,12 @@ const LoginComponent = () => {
             />
           </FloatingLabel>
         </div>
-        <Button type="submit" variant="primary">
+        <Button
+          type="submit"
+          variant="info"
+          className="button-login"
+          size="mb-3"
+        >
           Login
         </Button>
       </form>

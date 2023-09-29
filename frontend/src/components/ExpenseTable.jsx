@@ -5,13 +5,15 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import ModifyExpense from "./ModifyExpense.jsx";
-import Pagination from "react-bootstrap/Pagination"; // Import Pagination component
-import Container from "react-bootstrap/Container"; // Import Container for page layout
+import Pagination from "react-bootstrap/Pagination";
+import Container from "react-bootstrap/Container";
 
-const ExpenseTable = () => {
+// eslint-disable-next-line react/prop-types
+const ExpenseTable = ({ expenseData: initialExpenseData }) => {
   const { userId, token } = useUserId();
-  const [expenseData, setExpenseData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [expenseData, setExpenseData] = useState(initialExpenseData);
+  // eslint-disable-next-line no-unused-vars
+  const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
@@ -32,6 +34,7 @@ const ExpenseTable = () => {
 
   const fetchExpenseData = async (userId, token, page, pageSize) => {
     try {
+      setLoading(true);
       const response = await axios.get(
         `http://localhost:8080/expense/history/${userId}?page=${page}&pageSize=${pageSize}`,
         {
@@ -69,10 +72,6 @@ const ExpenseTable = () => {
       setCurrentPage(newPage);
     }
   };
-
-  if (loading) {
-    return <div>Loading data...</div>;
-  }
 
   return (
     <Container>

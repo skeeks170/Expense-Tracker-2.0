@@ -15,6 +15,6 @@ public class DashboardRecordsDTO {
     private Double transactionAmount;
     private String transactionDescription;
     private String transactionCategory;
-    private String transactionType;
+    private String transactionType; //expense or income type
 
 }

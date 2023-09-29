@@ -92,7 +92,7 @@ const RegisterComponent = () => {
 
   return (
     <div className="container-box">
-      <h3>Register</h3>
+      <h1 className="text">Register</h1>
       {error && <div className="error">{error}</div>}
       <Form onSubmit={handleSubmit}>
         <FloatingLabel controlId="userEmail" label="Email" className="mb-3">
@@ -165,7 +165,7 @@ const RegisterComponent = () => {
             onChange={handleInputChange}
           />
         </FloatingLabel>
-        <Button type="submit" variant="success">
+        <Button type="submit" variant="success" className="button-register">
           Register
         </Button>
       </Form>

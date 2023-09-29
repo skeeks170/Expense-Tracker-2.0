@@ -61,7 +61,7 @@ function Home() {
             Expenses
           </Button>
           {/* Sign-out button */}
-          <Button variant="primary" onClick={handleSignOut} className="button">
+          <Button variant="danger" onClick={handleSignOut} className="button">
             Sign Out
           </Button>
         </div>

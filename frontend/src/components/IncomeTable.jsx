@@ -4,7 +4,7 @@ import { useUserId } from "../UserIdContext";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import Pagination from "react-bootstrap/Pagination"; // Import Pagination component from React Bootstrap
+import Pagination from "react-bootstrap/Pagination";
 import ModifyIncome from "./ModifyIncome";
 
 const IncomeTable = () => {
@@ -107,7 +107,6 @@ const IncomeTable = () => {
       </Table>
       <div className="d-flex justify-content-center">
         {" "}
-        {/* Center pagination */}
         <Pagination>
           <Pagination.Prev
             onClick={() => handlePageChange(currentPage - 1)}
@@ -121,7 +120,6 @@ const IncomeTable = () => {
         </Pagination>
       </div>
 
-      {/* ModifyIncome Modal */}
       <Modal show={showUpdateModal} onHide={handleCloseUpdateModal}>
         <Modal.Header closeButton>
           <Modal.Title>Modify Income</Modal.Title>

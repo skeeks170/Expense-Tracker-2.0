@@ -22,8 +22,6 @@ public class DashboardRecordsServices {
     @Autowired
     private UserExpenseRepository userExpenseRepository;
 
-
-    @Transactional
     public List<DashboardRecordsDTO> getLastFiveFromDB(int userId) {
 
         List<UserIncome> lastFiveIncomes = userIncomeRepository

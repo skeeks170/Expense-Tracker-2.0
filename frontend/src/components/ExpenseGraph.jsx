@@ -4,7 +4,8 @@ import axios from "axios";
 
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
-const ExpenseGraph = () => {
+// eslint-disable-next-line react/prop-types
+const ExpenseGraph = ({ expenseData }) => {
   const [dataPoints, setDataPoints] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -62,7 +63,7 @@ const ExpenseGraph = () => {
         setError(error.message);
         setLoading(false);
       });
-  }, []);
+  }, [expenseData]);
 
   const options = {
     animationEnabled: true,

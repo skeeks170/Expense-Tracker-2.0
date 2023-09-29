@@ -15,7 +15,7 @@ function LoginPage() {
       {showLogin ? (
         <div className="login-box">
           <LoginComponent />
-          <p>
+          <p className="font-big">
             Do not have an account?{" "}
             <span className="toggle-link" onClick={toggleComponent}>
               Register
@@ -25,7 +25,7 @@ function LoginPage() {
       ) : (
         <div className="login-box">
           <RegisterComponent />
-          <p>
+          <p className="font-big">
             Already have an account?{" "}
             <span className="toggle-link" onClick={toggleComponent}>
               Login

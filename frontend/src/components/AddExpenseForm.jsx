@@ -5,7 +5,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 
-const AddExpenseForm = () => {
+// eslint-disable-next-line react/prop-types
+const AddExpenseForm = ({ updateExpenseData }) => {
   const { userId, token } = useUserId();
   const storedUserId = localStorage.getItem("userId");
   const storedToken = localStorage.getItem("token");
@@ -30,7 +31,7 @@ const AddExpenseForm = () => {
     e.preventDefault();
 
     try {
-      await axios.post(
+      const response = await axios.post(
         `http://localhost:8080/expense/create/${userId || storedUserId}`,
         expenseData,
         {
@@ -39,6 +40,9 @@ const AddExpenseForm = () => {
           },
         }
       );
+
+      const newExpense = response.data;
+      updateExpenseData(newExpense);
 
       setExpenseData({
         userIdJoin: userId || storedUserId,
